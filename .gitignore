@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.bak
+*.bak2
+*~
+
+# Office temporary files
+~$*
+
+# Generated files
+data/treerooted_with_bootstrap.nwk
+data/bootstrap_mapping.log
+
+# Old/temporary data files
+data/networks.pptx
+data/treerooted_nodosanotados_coronavirinae_nombresbien.nwk
+
+# Old figure versions
+figures/007_InDelsCoV_*.png
+figures/networks.pdf
+figures/networks.png
+
+# Final figures (uncomment to commit them)
+# figures/Figure_*.pdf
+# figures/Figure_*.png
