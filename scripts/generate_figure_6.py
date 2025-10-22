@@ -4,8 +4,8 @@ from Bio import Phylo
 from matplotlib.patches import Patch
 
 # File paths
-data_file = '../data/all_events_1_10_100.txt'
-tree_file = '../data/treerooted.nwk'
+data_file = 'data/all_events_1_10_100.txt'
+tree_file = 'data/treerooted.nwk'
 
 # Read deletion data
 df = pd.read_csv(data_file, sep='\t')
@@ -249,11 +249,11 @@ ax_del.invert_yaxis()
 ax_del_full_genes.invert_yaxis()
 
 # Adjust labels and title
-ax_del.set_xlabel('Genomic Position')
-ax_del.set_title('Deletions along Sequence')
+ax_del.set_xlabel('Genomic position')
+ax_del.set_title('Deletions along sequence')
 
-ax_del_full_genes.set_xlabel('Genomic Position')
-ax_del_full_genes.set_title('Complete Gene Deletions')
+ax_del_full_genes.set_xlabel('Genomic position')
+ax_del_full_genes.set_title('Complete gene deletions')
 
 # Integrate gene bar within ax_del
 gene_bar_y = total_nodes + 0.5  # Y position for gene bar
@@ -283,9 +283,9 @@ ax_legends = fig.add_axes([0.97, 0.25, 0.02, 0.65], frameon=False)
 ax_legends.axis('off')
 
 # Create legend elements for genes
-genes_unicos = genes.drop_duplicates(subset=['Gen', 'Color'])
+genes_unicos = genes.drop_duplicates(subset=['Gene', 'Color'])
 gene_legend_elements = [
-    Patch(facecolor=row['Color'], edgecolor='none', label=row['Gen'])
+    Patch(facecolor=row['Color'], edgecolor='none', label=row['Gene'])
     for idx, row in genes_unicos.iterrows()
 ]
 
@@ -323,8 +323,8 @@ genus_legend = fig.legend(
 )
 
 # Save and show figure
-plt.savefig('../figures/Figure_6.pdf', dpi=300, bbox_inches='tight')
-plt.savefig('../figures/Figure_6.png', dpi=300, bbox_inches='tight')
+plt.savefig('figures/Figure_6.pdf', dpi=300, bbox_inches='tight')
+plt.savefig('figures/Figure_6.png', dpi=300, bbox_inches='tight')
 print(f"✅ Full figure saved: Figure_6.pdf and Figure_6.png")
 plt.close()
 
@@ -471,13 +471,13 @@ for idx, row in df.iterrows():
             
             # Find intersections with genes for pointwise deletions
             for gene in genes_intervals:
-                gene_start = gene['Inicio']
-                gene_end = gene['Fin']
+                gene_start = gene['Start']
+                gene_end = gene['End']
                 overlap_start = max(del_start, gene_start)
                 overlap_end = min(del_end, gene_end)
                 if overlap_start < overlap_end:
                     color = gene['Color']
-                    ax_del_r.hlines(y, overlap_start, overlap_end, colors=color, linewidth=12, alpha=alpha)  # Very thick lines
+                    ax_del_r.hlines(y, overlap_start, overlap_end, colors=color, linewidth=20, alpha=alpha)  # Extra thick lines
 
 # Plot complete gene deletions for genus-level nodes
 for idx, row in df_full_gene_dels.iterrows():
@@ -503,7 +503,7 @@ for idx, row in df_full_gene_dels.iterrows():
             else:
                 alpha = 1.0
             
-            ax_del_full_genes_r.hlines(y, del_start, del_end, colors=color, linewidth=12, alpha=alpha)  # Very thick lines
+            ax_del_full_genes_r.hlines(y, del_start, del_end, colors=color, linewidth=20, alpha=alpha)  # Extra thick lines
 
 # Calculate gene bar Y position NOW (before drawing tree) so tree limits can match
 gene_bar_y_r = max(yticks_r) + 15  # Increased separation and shifted up
@@ -573,11 +573,11 @@ if len(yticks_r) > 0:
     ax_tree_r.set_ylim(ax_del_r.get_ylim())  # Copy exact limits from deletion panel
 
 # Set axis labels - VERY LARGE font with more separation
-ax_del_r.set_xlabel('Genomic Position', fontsize=26, fontweight='bold', labelpad=20)  # Increased labelpad
-ax_del_r.set_title('Deletions along Sequence', fontsize=28, fontweight='bold', pad=25)  # Increased pad
+ax_del_r.set_xlabel('Genomic position', fontsize=26, fontweight='bold', labelpad=20)  # Increased labelpad
+ax_del_r.set_title('Deletions along sequence', fontsize=28, fontweight='bold', pad=25)  # Increased pad
 
-ax_del_full_genes_r.set_xlabel('Genomic Position', fontsize=26, fontweight='bold', labelpad=20)  # Increased labelpad
-ax_del_full_genes_r.set_title('Complete Gene Deletions', fontsize=28, fontweight='bold', pad=25)  # Increased pad
+ax_del_full_genes_r.set_xlabel('Genomic position', fontsize=26, fontweight='bold', labelpad=20)  # Increased labelpad
+ax_del_full_genes_r.set_title('Complete gene deletions', fontsize=28, fontweight='bold', pad=25)  # Increased pad
 
 # Much larger tick labels for x-axis
 ax_del_r.tick_params(axis='x', labelsize=20)
@@ -592,8 +592,8 @@ for idx, row in genes.iterrows():
     x_start = row['Start']
     x_end = row['End']
     color = row['Color']
-    ax_del_r.hlines(gene_bar_y_r, x_start, x_end, colors=color, linewidth=16)  # Very thick gene bar
-    ax_del_full_genes_r.hlines(gene_bar_y_r, x_start, x_end, colors=color, linewidth=16)  # Very thick gene bar
+    ax_del_r.hlines(gene_bar_y_r, x_start, x_end, colors=color, linewidth=25)  # Extra thick gene bar
+    ax_del_full_genes_r.hlines(gene_bar_y_r, x_start, x_end, colors=color, linewidth=25)  # Extra thick gene bar
 
 # First invert Y axis
 ax_del_r.invert_yaxis()
@@ -626,7 +626,7 @@ for i, (y_pos, label, bg_color) in enumerate(zip(yticks_r, yticklabels_r, label_
     
     # Add text with background color - VERY LARGE
     text_obj = ax_del_r.text(x_text_pos, y_pos, label, 
-                             fontsize=28, fontweight='bold',
+                             fontsize=25, fontweight='bold',
                              ha='left', va='center',
                              transform=trans,  # Use blended transform
                              bbox=dict(boxstyle='round,pad=1.0', 
@@ -656,8 +656,8 @@ legend_genes_r = ax_legends_r.legend(
 )
 
 # Save reduced figure
-plt.savefig('../figures/Figure_6_reduced.pdf', dpi=300, bbox_inches='tight')
-plt.savefig('../figures/Figure_6_reduced.png', dpi=300, bbox_inches='tight')
+plt.savefig('figures/Figure_6_reduced.pdf', dpi=300, bbox_inches='tight')
+plt.savefig('figures/Figure_6_reduced.png', dpi=300, bbox_inches='tight')
 print(f"✅ Reduced figure saved: Figure_6_reduced.pdf and Figure_6_reduced.png")
 print(f"   Showing {len(reduced_nodes)} genus-level nodes instead of {len(yticks)} total nodes")
 

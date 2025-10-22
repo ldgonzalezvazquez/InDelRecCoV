@@ -8,11 +8,13 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from Bio import Phylo
 import os
+import sys
 
-def load_tree_with_bootstrap():
+def load_tree_with_bootstrap(bootstrap_tree_file=None):
     """Load tree with bootstrap values from pre-computed file"""
     
-    bootstrap_tree_file = '../data/treerooted_with_bootstrap.nwk'
+    if bootstrap_tree_file is None:
+        bootstrap_tree_file = '../data/treerooted_with_bootstrap.nwk'
     
     if not os.path.exists(bootstrap_tree_file):
         print("❌ Bootstrap tree file not found!")
@@ -176,7 +178,7 @@ def draw_tree(tree):
     # Bootstrap legend aligned to the right (below the previous one)
     legend_bootstrap_obj = fig.legend(handles=legend_bootstrap, loc='upper right', 
                                      bbox_to_anchor=(0.98, 0.65), 
-                                     title="Bootstrap Support", 
+                                     title="Bootstrap support", 
                                      fontsize=30, title_fontsize=32,
                                      handlelength=2, handleheight=1.5, 
                                      frameon=True, edgecolor='black', fancybox=False)
@@ -194,8 +196,8 @@ def draw_tree(tree):
     plt.tight_layout()
     
     # Save
-    pdf_name = '../figures/Figure_1.pdf'
-    png_name = '../figures/Figure_1.png'
+    pdf_name = 'figures/Figure_1.pdf'
+    png_name = 'figures/Figure_1.png'
     
     plt.savefig(pdf_name, dpi=300, bbox_inches='tight', facecolor='white')
     plt.savefig(png_name, dpi=300, bbox_inches='tight', facecolor='white')
@@ -208,8 +210,16 @@ def draw_tree(tree):
 def main():
     print("🌳 === PHYLOGENETIC TREE GENERATOR WITH BOOTSTRAP ===\n")
     
+    # Get bootstrap tree file from command line argument
+    bootstrap_file = None
+    if len(sys.argv) > 1:
+        bootstrap_file = sys.argv[1]
+        print(f"📁 Using bootstrap file: {bootstrap_file}")
+    else:
+        print("📁 Using default bootstrap file")
+    
     # Load tree with bootstrap values
-    tree = load_tree_with_bootstrap()
+    tree = load_tree_with_bootstrap(bootstrap_file)
     
     # Draw tree
     print("\n🎨 Drawing tree...")

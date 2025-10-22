@@ -89,7 +89,7 @@ def define_gene_positions():
     
     return genes, gene_colors
 
-def load_recombination_data(filename='../data/res_full.txt'):
+def load_recombination_data(filename='data/res_full.txt'):
     """Load recombination data from LDhat results"""
     try:
         # Read the data
@@ -139,14 +139,14 @@ def create_recombination_plot(data, genes, gene_colors, output_prefix='recombina
     
     # Plot confidence intervals as filled area
     ax_main.fill_between(positions, l95, u95, alpha=0.3, color='lightblue', 
-                         label='95% Confidence Interval')
+                         label='95% Confidence interval')
     
     # Plot mean recombination rate
     ax_main.plot(positions, mean_rho, color='darkblue', linewidth=1, 
-                 label='Mean of Population Recombination Rate (ρ)')
+                 label='Mean of population recombination rate (ρ)')
     
     # Customize main plot - NO TITLE
-    ax_main.set_ylabel('Population Recombination Rate (ρ)', fontsize=24, fontweight='bold')
+    ax_main.set_ylabel('Population recombination rate (ρ)', fontsize=24, fontweight='bold')
     ax_main.grid(True, alpha=0.3)
     ax_main.legend(fontsize=22, loc='upper right')
     ax_main.tick_params(axis='both', which='major', labelsize=22)
@@ -158,7 +158,7 @@ def create_recombination_plot(data, genes, gene_colors, output_prefix='recombina
     create_gene_bar(ax_genes, genes, gene_colors)
     
     # Customize gene bar
-    ax_genes.set_xlabel('Genome Position (bp)', fontsize=24, fontweight='bold', labelpad=15)
+    ax_genes.set_xlabel('Genome position (bp)', fontsize=24, fontweight='bold', labelpad=15)
     ax_genes.set_ylabel('Genes', fontsize=24, fontweight='bold')
     ax_genes.set_ylim(-0.2, 0.2)  # Adjust vertical space for gene bar
     ax_genes.set_xlim(0, max(positions))
@@ -184,7 +184,7 @@ def create_recombination_plot(data, genes, gene_colors, output_prefix='recombina
     
     # Create a separate legend box above the main plot area - extended to full width
     fig.legend(handles=legend_elements, loc='upper center', 
-              title='Gene Annotations', fontsize=20, title_fontsize=24, # Adjusted font sizes
+              title='Gene annotations', fontsize=20, title_fontsize=24, # Adjusted font sizes
               ncol=len(legend_elements)//3, bbox_to_anchor=(0.52, 0.92), frameon=True, 
               columnspacing=1.0, handletextpad=0.5) # Extended legend across plot width
     
@@ -195,8 +195,8 @@ def create_recombination_plot(data, genes, gene_colors, output_prefix='recombina
     plt.subplots_adjust(top=0.75)  # Leave space above for legend
     
         # Save plots
-    pdf_name = "../figures/Figure_3.pdf"
-    png_name = "../figures/Figure_3.png"
+    pdf_name = "figures/Figure_3.pdf"
+    png_name = "figures/Figure_3.png"
     
     plt.savefig(pdf_name, dpi=300, bbox_inches='tight', facecolor='white')
     plt.savefig(png_name, dpi=300, bbox_inches='tight', facecolor='white')
