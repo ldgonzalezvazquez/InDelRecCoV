@@ -47,9 +47,9 @@ InDelRecCoV/
 │       └── SARS-CoV-2_Spike/
 │            ├── Simulated_MSA_SARS-CoV-2_Spike_BN.tar.xz
 │            └── Simulated_MSA_SARS-CoV-2_Spike_Zipf_T.tar.xz
-├── figures/                          # Output figures
-├── requirements.txt                  # Python dependencies
-└── README.md                         # This file
+├── figures/                                    # Output figures
+├── requirements.txt                            # Python dependencies
+└── README.md                                   # This file
 ```
 
 ## Requirements
