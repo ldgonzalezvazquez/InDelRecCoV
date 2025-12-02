@@ -6,18 +6,47 @@ This repository contains scripts to generate figures for the manuscript analyzin
 
 ```
 InDelRecCoV/
-├── scripts/                          # Python scripts to generate figures
-│   ├── generate_figure_1.py          # Phylogenetic tree with bootstrap
-│   ├── generate_figure_3.py          # Recombination rate plot
-│   ├── generate_figure_6.py          # Ancestral deletion events
-│   └── process_indelmip_results.py   # Process InDelMIP output
-├── data/                             # Input data files
-│   ├── treerooted.nwk                # Rooted phylogenetic tree
-│   ├── treerooted.raxml.support      # Tree with bootstrap support values
-│   ├── outputmip.fasta               # InDelMIP binary sequences
-│   ├── all_events_1_10_100.txt       # Deletion events data
-│   ├── res_full.txt                  # LDhat recombination results
-│   └── aln_coronaviridae.fasta       # Multiple sequence alignment
+├── scripts/                                    # Python scripts to generate figures
+│   ├── generate_figure_1.py                    # Phylogenetic tree with bootstrap
+│   ├── generate_figure_3.py                    # Recombination rate plot
+│   ├── generate_figure_6.py                    # Ancestral deletion events
+│   └── process_indelmip_results.py             # Process InDelMIP output
+├── data/                                       # Input data files
+│   ├── treerooted.nwk                          # Rooted phylogenetic tree
+│   ├── treerooted.raxml.support                # Tree with bootstrap support values
+│   ├── outputmip.fasta                         # InDelMIP binary sequences
+│   ├── all_events_1_10_100.txt                 # Deletion events data
+│   ├── res_full.txt                            # LDhat recombination results
+│   ├── aln_coronaviridae.fasta                 # Multiple sequence alignment
+│   ├── Indel_ABC_estimation/                   # R scripts and inputs needed to perform the indel rate estimation for each Coronaviridae and SARS-CoV-2 genome and spike data
+│   │    ├── Coronaviridae_Genome/              
+│   │    ├── Coronaviridae_Spike/              
+│   │    ├── SARS-CoV-2_Genome/                 
+│   │    ├── SARS-CoV-2_Spike/                  
+│   │    └── Validation/                        # R scripts and inputs employed to test the method performance for each Coronaviridae and SARS-CoV-2 genome and spike data
+│   │         ├── Model_selection/              # model selection of for each Coronaviridae and SARS-CoV-2 genome and spike data
+│   │         |    ├── Coronaviridae_Genome/    
+│   │         |    ├── Coronaviridae_Spike/    
+│   │         |    ├── SARS-CoV-2_Genome/       
+│   │         |    └── SARS-CoV-2_Spike/        
+│   │         └── INDEL_estimation/             # and indel estimation of for each Coronaviridae and SARS-CoV-2 genome and spike data
+│   │              ├── Coronaviridae_Genome/    
+│   │              ├── Coronaviridae_Spike/     
+│   │              ├── SARS-CoV-2_Genome/       
+│   │              └── SARS-CoV-2_Spike/        
+│   └──Indel_Simulations/                       # Simulated alignments obtained considering indel events under Binomial and Zipf truncated indel models for each Coronaviridae and SARS-CoV-2 genome and spike data
+│       ├── Coronaviridae_Genome/
+│       │    ├── Simulated_MSA_Coronaviridae_Genome_BN.tar.xz
+│       │    └── Simulated_MSA_Coronaviridae_Genome_Zipf_T.tar.xz
+│       ├── Coronaviridae_Spike/
+│       │    ├── Simulated_MSA_Coronaviridae_Spike_BN.tar.xz
+│       │    └── Simulated_MSA_Coronaviridae_Spike_Zipf_T.tar.xz
+│       ├── SARS-CoV-2_Genome/
+│       │    ├── Simulated_MSA_SARS-CoV-2_Genome_BN.tar.xz
+│       │    └── Simulated_MSA_SARS-CoV-2_Genome_Zipf_T.tar.xz
+│       └── SARS-CoV-2_Spike/
+│            ├── Simulated_MSA_SARS-CoV-2_Spike_BN.tar.xz
+│            └── Simulated_MSA_SARS-CoV-2_Spike_Zipf_T.tar.xz
 ├── figures/                          # Output figures
 ├── requirements.txt                  # Python dependencies
 └── README.md                         # This file
@@ -265,6 +294,15 @@ The scripts use a consistent gene color scheme based on a custom palette. Gene p
 - **Structural proteins**: S (Spike), E (Envelope), M (Membrane), N (Nucleocapsid)
 - **Accessory proteins**: NS2, HE, NS4, NS6, etc.
 - **Other ORFs**: Multiple ORF2-11 genes, some duplicated in different genome regions
+
+
+
+
+
+
+
+
+
 
 ## Citation
 
