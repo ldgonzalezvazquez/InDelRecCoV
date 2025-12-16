@@ -18,7 +18,7 @@ InDelRecCoV/
 │   ├── all_events_1_10_100.txt                 # Deletion events data
 │   ├── res_full.txt                            # LDhat recombination results
 │   ├── aln_coronaviridae.fasta                 # Multiple sequence alignment
-│   ├── [Indel_ABC_estimation](https://universidadevigo-my.sharepoint.com/:f:/g/personal/luisdaniel_gonzalez_uvigo_gal/IgA_glwF291TS5bPb-CEwF6RAbEg6pFAEf0Qv4nliU9LnnA?e=AiQ8bH) /                   # R scripts and inputs needed to perform the indel rate estimation for each Coronaviridae and SARS-CoV-2 genome and spike data
+│   ├── Indel_ABC_estimation*/                  # R scripts and inputs needed to perform the indel rate estimation for each Coronaviridae and SARS-CoV-2 genome and spike data (link below)
 │   │    ├── Coronaviridae_Genome/              
 │   │    ├── Coronaviridae_Spike/              
 │   │    ├── SARS-CoV-2_Genome/                 
@@ -51,6 +51,8 @@ InDelRecCoV/
 ├── requirements.txt                            # Python dependencies
 └── README.md                                   # This file
 ```
+
+*[Indel_ABC_estimation](https://universidadevigo-my.sharepoint.com/:f:/g/personal/luisdaniel_gonzalez_uvigo_gal/IgA_glwF291TS5bPb-CEwF6RAbEg6pFAEf0Qv4nliU9LnnA?e=AiQ8bH)
 
 ## Requirements
 
